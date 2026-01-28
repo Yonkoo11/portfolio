@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Alex - Brutalist Direction</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #ffffff;
+      --text: #000000;
+      --accent: #ff3d00;
+      --gray: #888888;
+      --light-gray: #f5f5f5;
+    }
+
+    body {
+      font-family: 'Instrument Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    /* Nav */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg);
+      border-bottom: 2px solid var(--text);
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'Space Mono', monospace;
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+    }
+
+    .nav-links a {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--text);
+      letter-spacing: 0.1em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 2px solid var(--text);
+    }
+
+    .hero-left {
+      padding: 160px 60px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 2px solid var(--text);
+    }
+
+    .hero-title {
+      font-size: clamp(64px, 10vw, 140px);
+      font-weight: 700;
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-title span {
+      display: block;
+    }
+
+    .hero-title .outline {
+      -webkit-text-stroke: 2px var(--text);
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-title .accent {
+      color: var(--accent);
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 60px;
+      padding-top: 40px;
+      border-top: 2px solid var(--text);
+    }
+
+    .hero-meta-item {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-meta-item .label {
+      color: var(--gray);
+      margin-bottom: 4px;
+    }
+
+    .hero-meta-item .value {
+      font-weight: 700;
+    }
+
+    .hero-right {
+      padding: 160px 60px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--light-gray);
+    }
+
+    .hero-desc {
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 1.5;
+      margin-bottom: 48px;
+      max-width: 500px;
+    }
+
+    .hero-desc strong {
+      color: var(--accent);
+    }
+
+    .btn-brutal {
+      display: inline-block;
+      padding: 16px 32px;
+      background: var(--text);
+      color: var(--bg);
+      text-decoration: none;
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border: 2px solid var(--text);
+      transition: all 0.2s;
+      box-shadow: 4px 4px 0 var(--text);
+    }
+
+    .btn-brutal:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 4px 4px 0 var(--accent);
+      transform: translate(-2px, -2px);
+    }
+
+    /* Marquee */
+    .marquee {
+      overflow: hidden;
+      white-space: nowrap;
+      border-bottom: 2px solid var(--text);
+      padding: 16px 0;
+      background: var(--accent);
+    }
+
+    .marquee-inner {
+      display: inline-block;
+      animation: marquee 20s linear infinite;
+    }
+
+    .marquee-inner span {
+      font-family: 'Space Mono', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-right: 80px;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Projects */
+    .projects {
+      border-bottom: 2px solid var(--text);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px;
+      border-bottom: 2px solid var(--text);
+    }
+
+    .section-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+
+    .section-number {
+      font-family: 'Space Mono', monospace;
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .project-row {
+      display: grid;
+      grid-template-columns: 80px 1fr 300px 120px;
+      border-bottom: 2px solid var(--text);
+      transition: background 0.2s;
+    }
+
+    .project-row:hover {
+      background: var(--light-gray);
+    }
+
+    .project-row:last-child {
+      border-bottom: none;
+    }
+
+    .project-cell {
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      border-right: 2px solid var(--text);
+    }
+
+    .project-cell:last-child {
+      border-right: none;
+    }
+
+    .project-number {
+      font-family: 'Space Mono', monospace;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--gray);
+    }
+
+    .project-info {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .project-name {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .project-desc {
+      font-size: 14px;
+      color: var(--gray);
+      max-width: 400px;
+    }
+
+    .project-tech {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .tech-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 6px 12px;
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .project-link a {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .project-link a:hover {
+      text-decoration: underline;
+    }
+
+    /* Skills */
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 2px solid var(--text);
+    }
+
+    .skill-col {
+      padding: 60px 40px;
+      border-right: 2px solid var(--text);
+    }
+
+    .skill-col:last-child {
+      border-right: none;
+    }
+
+    .skill-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--text);
+    }
+
+    .skill-list {
+      list-style: none;
+    }
+
+    .skill-list li {
+      font-size: 16px;
+      font-weight: 500;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--light-gray);
+    }
+
+    .skill-list li:last-child {
+      border-bottom: none;
+    }
+
+    /* Contact */
+    .contact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .contact-left {
+      padding: 100px 60px;
+      border-right: 2px solid var(--text);
+    }
+
+    .contact-title {
+      font-size: 72px;
+      font-weight: 700;
+      line-height: 0.95;
+      margin-bottom: 40px;
+    }
+
+    .contact-title .outline {
+      -webkit-text-stroke: 2px var(--text);
+      -webkit-text-fill-color: transparent;
+    }
+
+    .contact-right {
+      padding: 100px 60px;
+      background: var(--text);
+      color: var(--bg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .contact-links {
+      list-style: none;
+    }
+
+    .contact-links li {
+      margin-bottom: 24px;
+    }
+
+    .contact-links a {
+      font-family: 'Space Mono', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--bg);
+      text-decoration: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--gray);
+      transition: color 0.2s;
+    }
+
+    .contact-links a:hover {
+      color: var(--accent);
+    }
+
+    .contact-links a span {
+      font-size: 20px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gray);
+      border-top: 2px solid var(--text);
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <span class="logo">Dr. Alex</span>
+    <div class="nav-links">
+      <a href="#">About</a>
+      <a href="#">Work</a>
+      <a href="#">Skills</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-left">
+      <h1 class="hero-title">
+        <span class="outline">Web3</span>
+        <span>Engineer</span>
+        <span class="accent">&</span>
+        <span>Builder</span>
+      </h1>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <p class="label">Projects</p>
+          <p class="value">5+ Shipped</p>
+        </div>
+        <div class="hero-meta-item">
+          <p class="label">Chains</p>
+          <p class="value">4 Networks</p>
+        </div>
+        <div class="hero-meta-item">
+          <p class="label">Status</p>
+          <p class="value">Available</p>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <p class="hero-desc">
+        I build <strong>DeFi protocols</strong>, <strong>prediction markets</strong>, and <strong>zero-knowledge systems</strong>.
+        Full-stack from smart contracts to polished frontends.
+      </p>
+      <a href="#work" class="btn-brutal">View Projects</a>
+    </div>
+  </section>
+
+  <div class="marquee">
+    <div class="marquee-inner">
+      <span>Solidity</span>
+      <span>Rust</span>
+      <span>Noir</span>
+      <span>React</span>
+      <span>Next.js</span>
+      <span>TypeScript</span>
+      <span>Solana</span>
+      <span>Ethereum</span>
+      <span>Solidity</span>
+      <span>Rust</span>
+      <span>Noir</span>
+      <span>React</span>
+      <span>Next.js</span>
+      <span>TypeScript</span>
+      <span>Solana</span>
+      <span>Ethereum</span>
+    </div>
+  </div>
+
+  <section class="projects" id="work">
+    <div class="section-header">
+      <h2 class="section-title">Selected Work</h2>
+      <span class="section-number">04</span>
+    </div>
+
+    <div class="project-row">
+      <div class="project-cell">
+        <span class="project-number">01</span>
+      </div>
+      <div class="project-cell project-info">
+        <h3 class="project-name">Shadow Markets</h3>
+        <p class="project-desc">Private prediction markets using zero-knowledge proofs on Solana</p>
+      </div>
+      <div class="project-cell project-tech">
+        <span class="tech-tag">Noir</span>
+        <span class="tech-tag">Solana</span>
+        <span class="tech-tag">Groth16</span>
+      </div>
+      <div class="project-cell project-link">
+        <a href="#">View &rarr;</a>
+      </div>
+    </div>
+
+    <div class="project-row">
+      <div class="project-cell">
+        <span class="project-number">02</span>
+      </div>
+      <div class="project-cell project-info">
+        <h3 class="project-name">Faktory Protocol</h3>
+        <p class="project-desc">Invoice yield optimization. Mint NFTs, earn 3.5-7% APY</p>
+      </div>
+      <div class="project-cell project-tech">
+        <span class="tech-tag">Solidity</span>
+        <span class="tech-tag">Mantle</span>
+      </div>
+      <div class="project-cell project-link">
+        <a href="#">View &rarr;</a>
+      </div>
+    </div>
+
+    <div class="project-row">
+      <div class="project-cell">
+        <span class="project-number">03</span>
+      </div>
+      <div class="project-cell project-info">
+        <h3 class="project-name">FlashBets</h3>
+        <p class="project-desc">60-second BTC prediction markets with instant settlement</p>
+      </div>
+      <div class="project-cell project-tech">
+        <span class="tech-tag">Rust</span>
+        <span class="tech-tag">Linera</span>
+      </div>
+      <div class="project-cell project-link">
+        <a href="#">View &rarr;</a>
+      </div>
+    </div>
+
+    <div class="project-row">
+      <div class="project-cell">
+        <span class="project-number">04</span>
+      </div>
+      <div class="project-cell project-info">
+        <h3 class="project-name">Last Rally</h3>
+        <p class="project-desc">On-chain Pong with NFT paddles and tournament betting</p>
+      </div>
+      <div class="project-cell project-tech">
+        <span class="tech-tag">Solidity</span>
+        <span class="tech-tag">Avalanche</span>
+      </div>
+      <div class="project-cell project-link">
+        <a href="#">View &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="skills">
+    <div class="skill-col">
+      <h3 class="skill-title">Frontend</h3>
+      <ul class="skill-list">
+        <li>React</li>
+        <li>Next.js</li>
+        <li>TypeScript</li>
+        <li>Tailwind</li>
+        <li>Framer Motion</li>
+      </ul>
+    </div>
+    <div class="skill-col">
+      <h3 class="skill-title">Contracts</h3>
+      <ul class="skill-list">
+        <li>Solidity</li>
+        <li>Rust</li>
+        <li>Noir (ZK)</li>
+        <li>Foundry</li>
+        <li>Anchor</li>
+      </ul>
+    </div>
+    <div class="skill-col">
+      <h3 class="skill-title">Chains</h3>
+      <ul class="skill-list">
+        <li>Ethereum</li>
+        <li>Solana</li>
+        <li>Mantle</li>
+        <li>Linera</li>
+        <li>Avalanche</li>
+      </ul>
+    </div>
+    <div class="skill-col">
+      <h3 class="skill-title">Tools</h3>
+      <ul class="skill-list">
+        <li>wagmi / viem</li>
+        <li>GraphQL</li>
+        <li>Docker</li>
+        <li>Hardhat</li>
+        <li>Git</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="contact">
+    <div class="contact-left">
+      <h2 class="contact-title">
+        Let's<br>
+        <span class="outline">Build</span><br>
+        Together
+      </h2>
+    </div>
+    <div class="contact-right">
+      <ul class="contact-links">
+        <li><a href="#">GitHub <span>&rarr;</span></a></li>
+        <li><a href="#">Telegram <span>&rarr;</span></a></li>
+        <li><a href="#">X / Twitter <span>&rarr;</span></a></li>
+        <li><a href="#">Email <span>&rarr;</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <span>&copy; 2026 Dr. Alex</span>
+    <span>Built with intention</span>
+  </footer>
+</body>
+</html>
