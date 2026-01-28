@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Alex - Terminal Direction</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0c0c0c;
+      --bg-elevated: #141414;
+      --bg-card: #1a1a1a;
+      --text: #e8e8e8;
+      --text-muted: #666666;
+      --green: #00ff88;
+      --green-dim: #00ff8833;
+      --amber: #ffaa00;
+      --red: #ff4444;
+      --border: #2a2a2a;
+    }
+
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Scanline effect */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.1) 2px,
+        rgba(0, 0, 0, 0.1) 4px
+      );
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 16px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(12, 12, 12, 0.95);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      font-size: 13px;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .logo {
+      color: var(--green);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .header-right {
+      display: flex;
+      gap: 32px;
+    }
+
+    .header-right a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .header-right a:hover {
+      color: var(--green);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 64px;
+      max-width: 1000px;
+    }
+
+    .hero-prefix {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    .hero-prefix span {
+      color: var(--green);
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 32px;
+    }
+
+    .hero h1 .highlight {
+      color: var(--green);
+      position: relative;
+    }
+
+    .hero h1 .cursor {
+      display: inline-block;
+      width: 3px;
+      height: 56px;
+      background: var(--green);
+      margin-left: 4px;
+      animation: blink 1s infinite;
+      vertical-align: middle;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin-bottom: 48px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: var(--bg);
+      border-color: var(--green);
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--green);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--green);
+      color: var(--green);
+    }
+
+    /* Terminal window */
+    .terminal-section {
+      padding: 80px 64px;
+    }
+
+    .terminal-window {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      max-width: 900px;
+    }
+
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .terminal-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .terminal-dot.red { background: #ff5f57; }
+    .terminal-dot.yellow { background: #febc2e; }
+    .terminal-dot.green { background: #28c840; }
+
+    .terminal-title {
+      margin-left: 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .terminal-body {
+      padding: 24px;
+      font-size: 14px;
+    }
+
+    .terminal-line {
+      margin-bottom: 8px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .terminal-prompt {
+      color: var(--green);
+      flex-shrink: 0;
+    }
+
+    .terminal-output {
+      color: var(--text-muted);
+    }
+
+    .terminal-output .value {
+      color: var(--amber);
+    }
+
+    .terminal-output .string {
+      color: var(--green);
+    }
+
+    /* Projects grid */
+    .projects-section {
+      padding: 80px 64px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 48px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .section-title span {
+      color: var(--green);
+      margin-right: 8px;
+    }
+
+    .projects-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .projects-table th {
+      text-align: left;
+      padding: 12px 16px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .projects-table td {
+      padding: 20px 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+      vertical-align: top;
+    }
+
+    .projects-table tr {
+      transition: background 0.2s;
+    }
+
+    .projects-table tr:hover {
+      background: var(--bg-elevated);
+    }
+
+    .project-name {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .project-desc {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-muted);
+      font-size: 13px;
+      max-width: 400px;
+    }
+
+    .project-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .project-status.live {
+      background: var(--green-dim);
+      color: var(--green);
+    }
+
+    .project-status.dev {
+      background: rgba(255, 170, 0, 0.15);
+      color: var(--amber);
+    }
+
+    .project-chain {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .project-link {
+      color: var(--green);
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Skills grid */
+    .skills-section {
+      padding: 80px 64px;
+      background: var(--bg-elevated);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .skill-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 24px;
+    }
+
+    .skill-category {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 16px;
+    }
+
+    .skill-list {
+      list-style: none;
+    }
+
+    .skill-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .skill-list li:last-child {
+      border-bottom: none;
+    }
+
+    /* Footer */
+    footer {
+      padding: 64px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-left {
+      font-size: 14px;
+    }
+
+    .footer-left .email {
+      color: var(--green);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--green);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <span class="logo">DR.ALEX_</span>
+      <div class="status">
+        <span class="status-dot"></span>
+        <span>Available for work</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <a href="#">/about</a>
+      <a href="#">/projects</a>
+      <a href="#">/skills</a>
+      <a href="#">/contact</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <p class="hero-prefix"><span>$</span> whoami</p>
+    <h1>
+      Web3 Engineer<br>
+      <span class="highlight">building the future</span><span class="cursor"></span>
+    </h1>
+    <p class="hero-desc">
+      I specialize in DeFi protocols, prediction markets, and zero-knowledge systems.
+      From Solidity to Rust to Noir, I ship production code across multiple chains.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+    </div>
+  </section>
+
+  <section class="terminal-section">
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <span class="terminal-dot red"></span>
+        <span class="terminal-dot yellow"></span>
+        <span class="terminal-dot green"></span>
+        <span class="terminal-title">alex@web3 ~ profile.json</span>
+      </div>
+      <div class="terminal-body">
+        <div class="terminal-line">
+          <span class="terminal-prompt">$</span>
+          <span class="terminal-output">cat profile.json</span>
+        </div>
+        <div class="terminal-line">
+          <span class="terminal-output">{</span>
+        </div>
+        <div class="terminal-line">
+          <span class="terminal-output">&nbsp;&nbsp;"name": <span class="string">"Dr. Alex"</span>,</span>
+        </div>
+        <div class="terminal-line">
+          <span class="terminal-output">&nbsp;&nbsp;"role": <span class="string">"Full-Stack Web3 Engineer"</span>,</span>
+        </div>
+        <div class="terminal-line">
+          <span class="terminal-output">&nbsp;&nbsp;"shipped_projects": <span class="value">5</span>,</span>
+        </div>
+        <div class="terminal-line">
+          <span class="terminal-output">&nbsp;&nbsp;"chains": [<span class="string">"Solana"</span>, <span class="string">"Mantle"</span>, <span class="string">"Linera"</span>, <span class="string">"Avalanche"</span>],</span>
+        </div>
+        <div class="terminal-line">
+          <span class="terminal-output">&nbsp;&nbsp;"languages": [<span class="string">"Solidity"</span>, <span class="string">"Rust"</span>, <span class="string">"Noir"</span>]</span>
+        </div>
+        <div class="terminal-line">
+          <span class="terminal-output">}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects-section" id="projects">
+    <div class="section-header">
+      <h2 class="section-title"><span>//</span> Projects</h2>
+    </div>
+    <table class="projects-table">
+      <thead>
+        <tr>
+          <th>Project</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Chain</th>
+          <th>Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="project-name">Shadow Markets</td>
+          <td class="project-desc">Private prediction markets using ZK proofs. Noir circuits, Groth16 verification.</td>
+          <td><span class="project-status live">Live</span></td>
+          <td class="project-chain">Solana</td>
+          <td><a href="#" class="project-link">View &rarr;</a></td>
+        </tr>
+        <tr>
+          <td class="project-name">Faktory Protocol</td>
+          <td class="project-desc">Invoice yield optimization. Mint NFTs for invoices, earn 3.5-7% APY.</td>
+          <td><span class="project-status live">Live</span></td>
+          <td class="project-chain">Mantle</td>
+          <td><a href="#" class="project-link">View &rarr;</a></td>
+        </tr>
+        <tr>
+          <td class="project-name">FlashBets</td>
+          <td class="project-desc">60-second BTC prediction markets with dynamic odds.</td>
+          <td><span class="project-status dev">Dev</span></td>
+          <td class="project-chain">Linera</td>
+          <td><a href="#" class="project-link">View &rarr;</a></td>
+        </tr>
+        <tr>
+          <td class="project-name">Last Rally</td>
+          <td class="project-desc">On-chain Pong with NFT paddles and tournament betting.</td>
+          <td><span class="project-status live">Live</span></td>
+          <td class="project-chain">Avalanche</td>
+          <td><a href="#" class="project-link">View &rarr;</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="skills-section">
+    <div class="section-header">
+      <h2 class="section-title"><span>//</span> Tech Stack</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3 class="skill-category">Frontend</h3>
+        <ul class="skill-list">
+          <li>React / Next.js</li>
+          <li>TypeScript</li>
+          <li>Tailwind CSS</li>
+          <li>Framer Motion</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3 class="skill-category">Smart Contracts</h3>
+        <ul class="skill-list">
+          <li>Solidity</li>
+          <li>Rust</li>
+          <li>Noir (ZK)</li>
+          <li>Anchor / Foundry</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3 class="skill-category">Chains</h3>
+        <ul class="skill-list">
+          <li>Ethereum / L2s</li>
+          <li>Solana</li>
+          <li>Linera</li>
+          <li>Avalanche</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3 class="skill-category">Tools</h3>
+        <ul class="skill-list">
+          <li>wagmi / viem</li>
+          <li>Hardhat / Foundry</li>
+          <li>GraphQL</li>
+          <li>Docker</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-left">
+        <p>Ready to build something? <span class="email">alexmustapha11@gmail.com</span></p>
+      </div>
+      <div class="footer-links">
+        <a href="#">GitHub</a>
+        <a href="#">Telegram</a>
+        <a href="#">X / Twitter</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
