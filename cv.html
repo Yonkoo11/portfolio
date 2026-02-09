@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Alex - CV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #f5f1e8;
+      --ink: #1a1a18;
+      --red: #c41e3a;
+      --gray: #6b6b6b;
+      --rule: #d4cfc4;
+    }
+
+    @page { size: A4; margin: 0; }
+
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      padding: 32px 40px;
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    /* Masthead */
+    .masthead {
+      text-align: center;
+      padding-bottom: 16px;
+      border-bottom: 3px double var(--ink);
+      margin-bottom: 16px;
+    }
+
+    .date-line {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 8px;
+    }
+
+    .masthead h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 0.9;
+    }
+
+    .tagline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: var(--gray);
+      margin-top: 8px;
+    }
+
+    /* Navigation bar */
+    .nav-bar {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 24px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    .nav-bar a {
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    /* Headline */
+    .headline {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .headline h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .headline .deck {
+      font-size: 14px;
+      color: var(--gray);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* Columns */
+    .columns {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+      border-top: 1px solid var(--rule);
+      padding-top: 20px;
+    }
+
+    .main-col {
+      border-right: 1px solid var(--rule);
+      padding-right: 24px;
+    }
+
+    /* Section headers */
+    .section-header {
+      font-family: 'Playfair Display', serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 4px;
+      margin-bottom: 16px;
+    }
+
+    /* Project articles */
+    .article {
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .article:last-child {
+      border-bottom: none;
+    }
+
+    .article h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .article .byline {
+      font-size: 10px;
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+
+    .article p {
+      color: var(--gray);
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    /* Sidebar */
+    .sidebar .section-header {
+      color: var(--red);
+    }
+
+    .stat-box {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 16px;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .stat-box .number {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .stat-box .label {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-top: 4px;
+    }
+
+    .skill-list {
+      list-style: none;
+    }
+
+    .skill-list li {
+      font-size: 11px;
+      padding: 6px 0;
+      border-bottom: 1px dotted var(--rule);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .skill-list .category {
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .skill-list .items {
+      color: var(--gray);
+      text-align: right;
+      font-size: 10px;
+    }
+
+    /* Contact footer */
+    .contact-footer {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 3px double var(--ink);
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+    }
+
+    .contact-footer a {
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .contact-footer .status {
+      color: var(--red);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <p class="date-line">Curriculum Vitae &mdash; January 2026</p>
+    <h1>Dr. Alex</h1>
+    <p class="tagline">"Building the future of finance, one smart contract at a time"</p>
+  </header>
+
+  <nav class="nav-bar">
+    <a href="#">GitHub: Yonkoo11</a>
+    <a href="#">X: @soligxbt</a>
+    <a href="#">alexmustapha11@gmail.com</a>
+    <a href="#">Telegram: @THaFa_11</a>
+  </nav>
+
+  <div class="headline">
+    <h2>Full-Stack Web3 Engineer Seeks<br>Remote Opportunities in DeFi</h2>
+    <p class="deck">Specialized in zero-knowledge proofs, prediction markets, and cross-chain protocols. From Solidity to Noir, Ethereum to Solana.</p>
+  </div>
+
+  <div class="columns">
+    <main class="main-col">
+      <h4 class="section-header">Featured Projects</h4>
+
+      <article class="article">
+        <h3>Shadow Markets</h3>
+        <p class="byline">Noir &bull; Anchor &bull; Solana &bull; Groth16</p>
+        <p>Private prediction markets leveraging zero-knowledge proofs for vote privacy. Implemented Noir circuits for anonymous voting, Groth16 on-chain verification, and browser-based proof generation. Users can participate in markets without revealing their positions.</p>
+      </article>
+
+      <article class="article">
+        <h3>Faktory Protocol</h3>
+        <p class="byline">Next.js &bull; Solidity &bull; Mantle &bull; wagmi</p>
+        <p>Invoice yield optimization platform enabling freelancers to mint NFTs representing unpaid invoices and earn 3.5-7% APY while awaiting payment. Built on Mantle for low-cost transactions and fast finality.</p>
+      </article>
+
+      <article class="article">
+        <h3>FlashBets</h3>
+        <p class="byline">Rust &bull; Linera &bull; GraphQL &bull; React</p>
+        <p>60-second BTC prediction markets with dynamic odds engine and instant settlement. Leverages Linera microchains for sub-second finality and horizontal scalability.</p>
+      </article>
+
+      <article class="article">
+        <h3>Last Rally</h3>
+        <p class="byline">React &bull; Solidity &bull; Avalanche &bull; RainbowKit</p>
+        <p>On-chain arcade gaming with NFT paddles and tournament betting pools. Classic Pong mechanics meet DeFi primitives on Avalanche C-Chain.</p>
+      </article>
+    </main>
+
+    <aside class="sidebar">
+      <h4 class="section-header">At a Glance</h4>
+
+      <div class="stat-box">
+        <div class="number">5+</div>
+        <div class="label">Shipped Projects</div>
+      </div>
+
+      <div class="stat-box">
+        <div class="number">4</div>
+        <div class="label">Blockchains</div>
+      </div>
+
+      <h4 class="section-header" style="margin-top: 20px;">Technical Stack</h4>
+      <ul class="skill-list">
+        <li><span class="category">Frontend</span><span class="items">React, Next.js, TS</span></li>
+        <li><span class="category">Contracts</span><span class="items">Solidity, Rust, Noir</span></li>
+        <li><span class="category">Chains</span><span class="items">ETH, SOL, Mantle</span></li>
+        <li><span class="category">Tools</span><span class="items">Foundry, Anchor</span></li>
+        <li><span class="category">Web3</span><span class="items">wagmi, viem, GraphQL</span></li>
+      </ul>
+    </aside>
+  </div>
+
+  <footer class="contact-footer">
+    <span>Portfolio: dr-alex-portfolio.vercel.app</span>
+    <span class="status">Currently accepting remote opportunities</span>
+  </footer>
+</body>
+</html>
