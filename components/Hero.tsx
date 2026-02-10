@@ -1,6 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { projects, profile, contact } from "@/data";
+
+const featured = projects.filter((p) => p.featured).slice(0, 2);
 
 export default function Hero() {
   return (
@@ -42,7 +45,7 @@ export default function Hero() {
               </svg>
             </a>
             <a
-              href="https://github.com/Yonkoo11"
+              href={contact.github}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-secondary"
@@ -54,41 +57,26 @@ export default function Hero() {
 
         {/* Right: Floating cards */}
         <div className="relative h-[400px] lg:h-[500px] hidden lg:block">
-          <motion.div
-            className="card absolute top-0 right-0 w-72 p-6"
-            initial={{ opacity: 0, y: 30, rotate: 0 }}
-            animate={{ opacity: 1, y: 0, rotate: 3 }}
-            transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] as const }}
-          >
-            <p className="label-small mb-3">Featured</p>
-            <h3 className="font-display text-xl font-bold mb-2">Shadow Markets</h3>
-            <p className="text-sm text-text-muted mb-4">
-              Private prediction markets using ZK proofs on Solana
-            </p>
-            <div className="flex flex-wrap gap-2">
-              <span className="tag">Noir</span>
-              <span className="tag">Solana</span>
-              <span className="tag">ZK</span>
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="card absolute bottom-12 left-0 w-80 p-6"
-            initial={{ opacity: 0, y: 30, rotate: 0 }}
-            animate={{ opacity: 1, y: 0, rotate: -2 }}
-            transition={{ duration: 0.7, delay: 0.5, ease: [0.22, 1, 0.36, 1] as const }}
-          >
-            <p className="label-small mb-3">Live Project</p>
-            <h3 className="font-display text-xl font-bold mb-2">Faktory Protocol</h3>
-            <p className="text-sm text-text-muted mb-4">
-              Invoice yield optimization. Mint NFTs, earn 3.5-7% APY.
-            </p>
-            <div className="flex flex-wrap gap-2">
-              <span className="tag">DeFi</span>
-              <span className="tag">Mantle</span>
-              <span className="tag">Solidity</span>
-            </div>
-          </motion.div>
+          {featured.map((project, i) => (
+            <motion.div
+              key={project.name}
+              className={`card absolute p-6 ${i === 0 ? "top-0 right-0 w-72" : "bottom-12 left-0 w-80"}`}
+              initial={{ opacity: 0, y: 30, rotate: 0 }}
+              animate={{ opacity: 1, y: 0, rotate: i === 0 ? 3 : -2 }}
+              transition={{ duration: 0.7, delay: 0.3 + i * 0.2, ease: [0.22, 1, 0.36, 1] as const }}
+            >
+              <p className="label-small mb-3">{project.live ? "Live Project" : "Featured"}</p>
+              <h3 className="font-display text-xl font-bold mb-2">{project.title}</h3>
+              <p className="text-sm text-text-muted mb-4">
+                {project.description.length > 80 ? project.description.slice(0, 77) + "..." : project.description}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {project.tech.slice(0, 3).map((t) => (
+                  <span key={t} className="tag">{t}</span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

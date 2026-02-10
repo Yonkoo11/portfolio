@@ -1,13 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { getStats } from "@/data";
 
-const stats = [
-  { value: "5+", label: "Shipped Projects" },
-  { value: "4", label: "Blockchains" },
-  { value: "3", label: "Smart Contract Languages" },
-  { value: "ZK", label: "Proof Systems" },
-];
+const stats = getStats();
 
 export default function Stats() {
   return (
