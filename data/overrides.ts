@@ -35,6 +35,15 @@ export const overrides: Record<string, ProjectOverride> = {
     live: null,
     cvDescription: "60-second BTC prediction markets with dynamic odds engine and instant settlement. Leverages Linera microchains for sub-second finality and horizontal scalability.",
   },
+  "anchor-selfcare": {
+    title: "ANCHOR",
+    description: "Evidence-based self-care guide. Breathing exercises, grounding techniques, daily wellness. No tracking, no judgment.",
+    tech: ["Next.js", "Tailwind CSS", "PWA"],
+    order: 2,
+    featured: true,
+    live: "https://yonkoo11.github.io/anchor-selfcare/",
+    cvDescription: "Self-care PWA built on evidence-based practices from neuroscience and trauma-informed care. Features guided breathing with audio cues, grounding techniques, daily baseline tracking, and movement guides. No accounts, no data collection, free forever.",
+  },
   "last-rally": {
     title: "Last Rally",
     description: "On-chain Pong with NFT paddles and tournament betting. Arcade gaming meets DeFi on Avalanche.",
