@@ -1,12 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { profile, getStats } from "@/data";
 
-const stats = [
-  { value: "5+", label: "Shipped Projects" },
-  { value: "4", label: "Blockchains" },
-  { value: "3", label: "Languages" },
-];
+const stats = getStats().slice(0, 3);
 
 export default function About() {
   return (
@@ -32,19 +29,11 @@ export default function About() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p>
-              I&apos;m a full-stack Web3 engineer who cares equally about form and function.
-              I&apos;ve built DeFi protocols on Mantle, prediction markets on Linera,
-              zero-knowledge voting systems on Solana, and on-chain arcade games on Avalanche.
-            </p>
-            <p>
-              My work spans smart contract development (Solidity, Rust, Noir) and
-              frontend engineering (React, Next.js, TypeScript). I also build ML
-              pipelines for crypto trading systems when the problem calls for it.
-            </p>
-            <p className="text-text">
-              I move fast, ship quality, and build tools the crypto community actually wants to use.
-            </p>
+            {profile.bio.map((paragraph, i) => (
+              <p key={i} className={i === profile.bio.length - 1 ? "text-text" : undefined}>
+                {paragraph}
+              </p>
+            ))}
           </motion.div>
 
           <motion.div

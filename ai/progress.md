@@ -1,29 +1,27 @@
 # Progress
 
 ## Last Session Summary
-- **Date:** 2026-01-28
+- **Date:** 2026-02-10
 - **What was done:**
-  - Revamped portfolio from dark theme to Editorial (cream/coral) aesthetic
-  - Created broadsheet-style CV with newspaper layout
-  - Generated OG image for social sharing
-  - Verified mobile responsiveness
-  - Deployed to Vercel with clean URL (dr-alex-portfolio.vercel.app)
-  - Pushed to GitHub (github.com/Yonkoo11/portfolio)
-  - Generated PDF of CV
+  - Built auto-update system: tag repos with `portfolio` topic, data syncs from GitHub API
+  - Created data layer: `data/config.ts`, `data/overrides.ts`, `data/projects.json`, `data/index.ts`
+  - Created sync script: `scripts/sync-projects.ts` (pre-build, fetches GitHub API)
+  - Refactored all 7 components to import from `@/data`
+  - Converted CV from static HTML to Next.js page at `app/cv/page.tsx`
+  - Added GitHub Actions deploy workflow (daily cron + push + manual)
+  - Tagged 4 repos with "portfolio" topic
+  - Build verified passing with `/` and `/cv` routes
 
 - **What's next:**
-  - Portfolio is complete and ready for job applications
-  - Consider adding a "Download CV" button to portfolio Contact section
-  - Could add resume/CV as a route in Next.js instead of static HTML
+  - Push to master to trigger first GitHub Pages deploy
+  - Verify live URLs work
 
-- **Blockers/Issues:** None
+## Live URLs
+- Portfolio: https://yonkoo11.github.io/portfolio/
+- CV: https://yonkoo11.github.io/portfolio/cv
+- Repo: https://github.com/Yonkoo11/portfolio
 
-## Handover Notes
-Portfolio and CV are complete and deployed. All assets committed to GitHub.
-
-**Live URLs:**
-- Portfolio: https://dr-alex-portfolio.vercel.app
-- CV: https://dr-alex-portfolio.vercel.app/cv.html
-- GitHub: https://github.com/Yonkoo11/portfolio
-
-**PDF Location:** ~/Desktop/Dr-Alex-CV.pdf
+## How to add a new project
+1. `gh repo edit Yonkoo11/<repo> --add-topic portfolio`
+2. Optionally add override in `data/overrides.ts`
+3. Wait for daily cron or trigger: `gh workflow run deploy.yml`

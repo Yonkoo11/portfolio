@@ -1,30 +1,30 @@
 import type { Metadata } from "next";
+import { profile, contact } from "@/data";
 import "./globals.css";
 
+const description = "Full-stack Web3 engineer building across DeFi, prediction markets, zero-knowledge proofs, and blockchain gaming.";
+
 export const metadata: Metadata = {
-  title: "Dr. Alex | Web3 Engineer",
-  description:
-    "Full-stack Web3 engineer building across DeFi, prediction markets, zero-knowledge proofs, and blockchain gaming.",
+  title: `${profile.name} | ${profile.title}`,
+  description,
   openGraph: {
-    title: "Dr. Alex | Web3 Engineer",
-    description:
-      "Full-stack Web3 engineer building across DeFi, prediction markets, zero-knowledge proofs, and blockchain gaming.",
+    title: `${profile.name} | ${profile.title}`,
+    description,
     type: "website",
     images: [
       {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "Dr. Alex - Web3 Engineer",
+        alt: `${profile.name} - ${profile.title}`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dr. Alex | Web3 Engineer",
-    description:
-      "Full-stack Web3 engineer. DeFi, prediction markets, ZK proofs, blockchain gaming.",
-    creator: "@soligxbt",
+    title: `${profile.name} | ${profile.title}`,
+    description: `${profile.title}. DeFi, prediction markets, ZK proofs, blockchain gaming.`,
+    creator: contact.xHandle,
     images: ["/og.png"],
   },
   icons: {

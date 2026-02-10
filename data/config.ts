@@ -1,0 +1,29 @@
+export const profile = {
+  name: "Dr. Alex",
+  title: "Full-Stack Web3 Engineer",
+  tagline: "Building the future of finance.",
+  bio: [
+    "I'm a full-stack Web3 engineer who cares equally about form and function. I've built DeFi protocols on Mantle, prediction markets on Linera, zero-knowledge voting systems on Solana, and on-chain arcade games on Avalanche.",
+    "My work spans smart contract development (Solidity, Rust, Noir) and frontend engineering (React, Next.js, TypeScript). I also build ML pipelines for crypto trading systems when the problem calls for it.",
+    "I move fast, ship quality, and build tools the crypto community actually wants to use.",
+  ],
+  status: "Currently accepting remote opportunities",
+  cvDate: "February 2026",
+} as const;
+
+export const contact = {
+  github: "https://github.com/Yonkoo11",
+  telegram: "https://t.me/THaFa_11",
+  x: "https://x.com/soligxbt",
+  email: "alexmustapha11@gmail.com",
+  githubHandle: "Yonkoo11",
+  xHandle: "@soligxbt",
+  telegramHandle: "@THaFa_11",
+} as const;
+
+export const skillGroups = [
+  { label: "Frontend", skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"] },
+  { label: "Smart Contracts", skills: ["Solidity", "Rust", "Noir", "Foundry", "Anchor"] },
+  { label: "Chains", skills: ["Ethereum", "Solana", "Mantle", "Linera", "Avalanche"] },
+  { label: "Tools", skills: ["wagmi", "viem", "GraphQL", "Docker", "Git"] },
+] as const;

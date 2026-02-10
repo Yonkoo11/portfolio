@@ -1,12 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { contact, profile } from "@/data";
 
 const links = [
-  { label: "GitHub", href: "https://github.com/Yonkoo11" },
-  { label: "Telegram", href: "https://t.me/THaFa_11" },
-  { label: "X", href: "https://x.com/soligxbt" },
-  { label: "Email", href: "mailto:alexmustapha11@gmail.com" },
+  { label: "GitHub", href: contact.github },
+  { label: "Telegram", href: contact.telegram },
+  { label: "X", href: contact.x },
+  { label: "Email", href: `mailto:${contact.email}` },
 ];
 
 export default function Contact() {
@@ -55,7 +56,7 @@ export default function Contact() {
         viewport={{ once: true }}
         transition={{ delay: 0.3 }}
       >
-        <p>&copy; {new Date().getFullYear()} Dr. Alex</p>
+        <p>&copy; {new Date().getFullYear()} {profile.name}</p>
       </motion.div>
     </section>
   );

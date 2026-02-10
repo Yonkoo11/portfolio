@@ -1,0 +1,57 @@
+{
+  "lastUpdated": "2026-02-10T09:21:49.798Z",
+  "projects": [
+    {
+      "name": "shadow-markets",
+      "title": "Shadow Markets",
+      "description": "Private prediction markets on Solana using zero-knowledge proofs. Noir circuits, Groth16 verification, browser proving.",
+      "tech": ["Noir", "Anchor", "Solana", "Groth16"],
+      "github": "https://github.com/Yonkoo11/shadow-markets",
+      "live": "https://yonkoo11.github.io/shadow-markets/",
+      "stars": 0,
+      "updatedAt": "2026-02-10T09:21:33Z",
+      "order": 1,
+      "featured": true,
+      "cvDescription": "Private prediction markets leveraging zero-knowledge proofs for vote privacy. Implemented Noir circuits for anonymous voting, Groth16 on-chain verification, and browser-based proof generation. Users can participate in markets without revealing their positions."
+    },
+    {
+      "name": "faktory",
+      "title": "Faktory Protocol",
+      "description": "Invoice yield optimization platform. Freelancers mint NFTs for unpaid invoices and earn 3.5-7% APY while waiting.",
+      "tech": ["Next.js", "Solidity", "Mantle", "wagmi"],
+      "github": "https://github.com/Yonkoo11/faktory",
+      "live": "https://faktory-app.vercel.app",
+      "stars": 1,
+      "updatedAt": "2026-02-10T09:21:35Z",
+      "order": 2,
+      "featured": true,
+      "cvDescription": "Invoice yield optimization platform enabling freelancers to mint NFTs representing unpaid invoices and earn 3.5-7% APY while awaiting payment. Built on Mantle for low-cost transactions and fast finality."
+    },
+    {
+      "name": "flashbets",
+      "title": "FlashBets",
+      "description": "60-second BTC prediction markets with dynamic odds and instant settlement on Linera microchains.",
+      "tech": ["Rust", "Linera", "GraphQL", "React"],
+      "github": "https://github.com/Yonkoo11/flashbets",
+      "live": null,
+      "stars": 0,
+      "updatedAt": "2026-01-27T00:00:00Z",
+      "order": 3,
+      "featured": false,
+      "cvDescription": "60-second BTC prediction markets with dynamic odds engine and instant settlement. Leverages Linera microchains for sub-second finality and horizontal scalability."
+    },
+    {
+      "name": "last-rally",
+      "title": "Last Rally",
+      "description": "On-chain Pong with NFT paddles and tournament betting. Arcade gaming meets DeFi on Avalanche.",
+      "tech": ["React", "Solidity", "Avalanche", "RainbowKit"],
+      "github": "https://github.com/Yonkoo11/last-rally",
+      "live": "https://last-rally.vercel.app",
+      "stars": 0,
+      "updatedAt": "2026-01-27T00:00:00Z",
+      "order": 4,
+      "featured": false,
+      "cvDescription": "On-chain arcade gaming with NFT paddles and tournament betting pools. Classic Pong mechanics meet DeFi primitives on Avalanche C-Chain."
+    }
+  ]
+}

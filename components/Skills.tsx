@@ -1,25 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const skillGroups = [
-  {
-    label: "Frontend",
-    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
-  },
-  {
-    label: "Smart Contracts",
-    skills: ["Solidity", "Rust", "Noir", "Foundry", "Anchor"],
-  },
-  {
-    label: "Chains",
-    skills: ["Ethereum", "Solana", "Mantle", "Linera", "Avalanche"],
-  },
-  {
-    label: "Tools",
-    skills: ["wagmi", "viem", "GraphQL", "Docker", "Git"],
-  },
-];
+import { skillGroups } from "@/data";
 
 export default function Skills() {
   return (

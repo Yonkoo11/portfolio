@@ -1,41 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const projects = [
-  {
-    title: "Shadow Markets",
-    description:
-      "Private prediction markets on Solana using zero-knowledge proofs. Noir circuits, Groth16 verification, browser proving.",
-    tech: ["Noir", "Anchor", "Solana", "Groth16"],
-    github: "https://github.com/Yonkoo11/shadow-markets",
-    live: "https://yonkoo11.github.io/shadow-markets/",
-  },
-  {
-    title: "Faktory Protocol",
-    description:
-      "Invoice yield optimization platform. Freelancers mint NFTs for unpaid invoices and earn 3.5-7% APY while waiting.",
-    tech: ["Next.js", "Solidity", "Mantle", "wagmi"],
-    github: "https://github.com/Yonkoo11/faktory",
-    live: "https://faktory-app.vercel.app",
-  },
-  {
-    title: "FlashBets",
-    description:
-      "60-second BTC prediction markets with dynamic odds and instant settlement on Linera microchains.",
-    tech: ["Rust", "Linera", "GraphQL", "React"],
-    github: "https://github.com/Yonkoo11/flashbets",
-    live: null,
-  },
-  {
-    title: "Last Rally",
-    description:
-      "On-chain Pong with NFT paddles and tournament betting. Arcade gaming meets DeFi on Avalanche.",
-    tech: ["React", "Solidity", "Avalanche", "RainbowKit"],
-    github: "https://github.com/Yonkoo11/last-rally",
-    live: "https://last-rally.vercel.app",
-  },
-];
+import { projects } from "@/data";
 
 export default function Projects() {
   return (
