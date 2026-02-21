@@ -1,11 +1,16 @@
 {
-  "lastUpdated": "2026-02-10T09:21:49.798Z",
+  "lastUpdated": "2026-02-21T23:00:57.847Z",
   "projects": [
     {
       "name": "shadow-markets",
       "title": "Shadow Markets",
       "description": "Private prediction markets on Solana using zero-knowledge proofs. Noir circuits, Groth16 verification, browser proving.",
-      "tech": ["Noir", "Anchor", "Solana", "Groth16"],
+      "tech": [
+        "Noir",
+        "Anchor",
+        "Solana",
+        "Groth16"
+      ],
       "github": "https://github.com/Yonkoo11/shadow-markets",
       "live": "https://yonkoo11.github.io/shadow-markets/",
       "stars": 0,
@@ -15,41 +20,145 @@
       "cvDescription": "Private prediction markets leveraging zero-knowledge proofs for vote privacy. Implemented Noir circuits for anonymous voting, Groth16 on-chain verification, and browser-based proof generation. Users can participate in markets without revealing their positions."
     },
     {
+      "name": "the-patron",
+      "title": "The Patron",
+      "description": "Autonomous AI agent that discovers Base builders and sends them ETH micro-grants. No human in the loop.",
+      "tech": [
+        "TypeScript",
+        "Solidity",
+        "Base",
+        "AI Agent"
+      ],
+      "github": "https://github.com/Yonkoo11/the-patron",
+      "live": "https://yonkoo11.github.io/the-patron/",
+      "stars": 0,
+      "updatedAt": "2026-02-21T23:00:07Z",
+      "order": 2,
+      "featured": true,
+      "cvDescription": "Autonomous grant-giving AI agent on Base L2. Discovers early-stage builders via on-chain activity analysis, evaluates project potential, and distributes ETH micro-grants without human intervention."
+    },
+    {
+      "name": "vibe-auditor",
+      "title": "Vibe Auditor",
+      "description": "Claude Code plugin that audits AI-generated code for security vulnerabilities and auto-fixes them.",
+      "tech": [
+        "TypeScript",
+        "Claude API",
+        "AST",
+        "Security"
+      ],
+      "github": "https://github.com/Yonkoo11/vibe-auditor",
+      "live": "https://yonkoo11.github.io/vibe-auditor/",
+      "stars": 0,
+      "updatedAt": "2026-02-21T23:00:09Z",
+      "order": 3,
+      "featured": true,
+      "cvDescription": "Security auditing plugin for Claude Code. Scans AI-generated codebases for SQL injection, XSS, hardcoded secrets, and missing auth, then generates fixes and regression tests automatically."
+    },
+    {
       "name": "faktory",
       "title": "Faktory Protocol",
       "description": "Invoice yield optimization platform. Freelancers mint NFTs for unpaid invoices and earn 3.5-7% APY while waiting.",
-      "tech": ["Next.js", "Solidity", "Mantle", "wagmi"],
+      "tech": [
+        "Next.js",
+        "Solidity",
+        "Mantle",
+        "wagmi"
+      ],
       "github": "https://github.com/Yonkoo11/faktory",
-      "live": "https://faktory-app.vercel.app",
+      "live": "https://yonkoo11.github.io/faktory/",
       "stars": 1,
       "updatedAt": "2026-02-10T09:21:35Z",
-      "order": 2,
+      "order": 4,
       "featured": true,
       "cvDescription": "Invoice yield optimization platform enabling freelancers to mint NFTs representing unpaid invoices and earn 3.5-7% APY while awaiting payment. Built on Mantle for low-cost transactions and fast finality."
+    },
+    {
+      "name": "anchor-selfcare",
+      "title": "ANCHOR",
+      "description": "Evidence-based self-care guide. Breathing exercises, grounding techniques, daily wellness. No tracking, no judgment.",
+      "tech": [
+        "Next.js",
+        "Tailwind CSS",
+        "PWA"
+      ],
+      "github": "https://github.com/Yonkoo11/anchor-selfcare",
+      "live": "https://yonkoo11.github.io/anchor-selfcare/",
+      "stars": 1,
+      "updatedAt": "2026-02-11T16:37:53Z",
+      "order": 5,
+      "featured": true,
+      "cvDescription": "Self-care PWA built on evidence-based practices from neuroscience and trauma-informed care. Features guided breathing with audio cues, grounding techniques, daily baseline tracking, and movement guides. No accounts, no data collection, free forever."
     },
     {
       "name": "flashbets",
       "title": "FlashBets",
       "description": "60-second BTC prediction markets with dynamic odds and instant settlement on Linera microchains.",
-      "tech": ["Rust", "Linera", "GraphQL", "React"],
+      "tech": [
+        "Rust",
+        "Linera",
+        "GraphQL",
+        "React"
+      ],
       "github": "https://github.com/Yonkoo11/flashbets",
       "live": null,
       "stars": 0,
-      "updatedAt": "2026-01-27T00:00:00Z",
-      "order": 3,
+      "updatedAt": "2026-02-10T09:21:37Z",
+      "order": 6,
       "featured": false,
       "cvDescription": "60-second BTC prediction markets with dynamic odds engine and instant settlement. Leverages Linera microchains for sub-second finality and horizontal scalability."
+    },
+    {
+      "name": "dagpulse",
+      "title": "DAGPulse",
+      "description": "Real-time Kaspa blockchain visualizer. Watch blocks, transactions, and DAG structure live.",
+      "tech": [
+        "Svelte",
+        "WebSocket",
+        "Kaspa",
+        "D3.js"
+      ],
+      "github": "https://github.com/Yonkoo11/dagpulse",
+      "live": "https://yonkoo11.github.io/dagpulse/",
+      "stars": 0,
+      "updatedAt": "2026-02-21T23:00:10Z",
+      "order": 7,
+      "featured": false,
+      "cvDescription": "Real-time visualization dashboard for the Kaspa blockchain DAG. Streams live blocks and transactions via WebSocket, renders DAG topology, and displays network health metrics."
+    },
+    {
+      "name": "kaspa-pos",
+      "title": "Kaspa POS",
+      "description": "Instant crypto payments for merchants. Point-of-sale terminal powered by Kaspa's 1-second block times.",
+      "tech": [
+        "Svelte",
+        "Kaspa",
+        "QR",
+        "WebSocket"
+      ],
+      "github": "https://github.com/Yonkoo11/kaspa-pos",
+      "live": "https://yonkoo11.github.io/kaspa-pos/",
+      "stars": 0,
+      "updatedAt": "2026-02-21T23:00:12Z",
+      "order": 8,
+      "featured": false,
+      "cvDescription": "Merchant point-of-sale application for accepting Kaspa cryptocurrency payments. Features QR code generation, real-time payment confirmation via WebSocket, and transaction history."
     },
     {
       "name": "last-rally",
       "title": "Last Rally",
       "description": "On-chain Pong with NFT paddles and tournament betting. Arcade gaming meets DeFi on Avalanche.",
-      "tech": ["React", "Solidity", "Avalanche", "RainbowKit"],
+      "tech": [
+        "React",
+        "Solidity",
+        "Avalanche",
+        "RainbowKit"
+      ],
       "github": "https://github.com/Yonkoo11/last-rally",
-      "live": "https://last-rally.vercel.app",
+      "live": "https://yonkoo11.github.io/last-rally/",
       "stars": 0,
-      "updatedAt": "2026-01-27T00:00:00Z",
-      "order": 4,
+      "updatedAt": "2026-02-13T22:53:23Z",
+      "order": 9,
       "featured": false,
       "cvDescription": "On-chain arcade gaming with NFT paddles and tournament betting pools. Classic Pong mechanics meet DeFi primitives on Avalanche C-Chain."
     }

@@ -22,8 +22,8 @@ export const contact = {
 } as const;
 
 export const skillGroups = [
-  { label: "Frontend", skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"] },
+  { label: "Frontend", skills: ["React", "Next.js", "Svelte", "TypeScript", "Tailwind CSS", "Framer Motion"] },
   { label: "Smart Contracts", skills: ["Solidity", "Rust", "Noir", "Foundry", "Anchor"] },
-  { label: "Chains", skills: ["Ethereum", "Solana", "Mantle", "Linera", "Avalanche"] },
+  { label: "Chains", skills: ["Ethereum", "Solana", "Base", "Mantle", "Kaspa", "Avalanche"] },
   { label: "Tools", skills: ["wagmi", "viem", "GraphQL", "Docker", "Git"] },
 ] as const;
