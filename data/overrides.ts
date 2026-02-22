@@ -6,6 +6,7 @@ export interface ProjectOverride {
   live?: string | null;
   featured?: boolean;
   cvDescription?: string;
+  badge?: string;
 }
 
 export const overrides: Record<string, ProjectOverride> = {
@@ -31,16 +32,17 @@ export const overrides: Record<string, ProjectOverride> = {
     title: "Vibe Auditor",
     description: "Claude Code plugin that audits AI-generated code for security vulnerabilities and auto-fixes them.",
     tech: ["TypeScript", "Claude API", "AST", "Security"],
-    order: 3,
+    order: 4,
     featured: true,
     live: "https://yonkoo11.github.io/vibe-auditor/",
+    badge: "Hackathon Build",
     cvDescription: "Security auditing plugin for Claude Code. Scans AI-generated codebases for SQL injection, XSS, hardcoded secrets, and missing auth, then generates fixes and regression tests automatically.",
   },
   "faktory": {
     title: "Faktory Protocol",
     description: "Invoice yield optimization platform. Freelancers mint NFTs for unpaid invoices and earn 3.5-7% APY while waiting.",
     tech: ["Next.js", "Solidity", "Mantle", "wagmi"],
-    order: 4,
+    order: 5,
     featured: true,
     live: "https://yonkoo11.github.io/faktory/",
     cvDescription: "Invoice yield optimization platform enabling freelancers to mint NFTs representing unpaid invoices and earn 3.5-7% APY while awaiting payment. Built on Mantle for low-cost transactions and fast finality.",
@@ -49,16 +51,26 @@ export const overrides: Record<string, ProjectOverride> = {
     title: "ANCHOR",
     description: "Evidence-based self-care guide. Breathing exercises, grounding techniques, daily wellness. No tracking, no judgment.",
     tech: ["Next.js", "Tailwind CSS", "PWA"],
-    order: 5,
+    order: 6,
     featured: true,
     live: "https://yonkoo11.github.io/anchor-selfcare/",
     cvDescription: "Self-care PWA built on evidence-based practices from neuroscience and trauma-informed care. Features guided breathing with audio cues, grounding techniques, daily baseline tracking, and movement guides. No accounts, no data collection, free forever.",
+  },
+  "truthbounty-video": {
+    title: "TruthBounty",
+    description: "Prediction markets platform for real-world truth verification. Core team member, 2nd place Seedify hackathon, raised $500K.",
+    tech: ["React", "Solidity", "Prediction Markets"],
+    order: 3,
+    featured: true,
+    badge: "2nd Place - Seedify Hackathon",
+    live: null,
+    cvDescription: "Prediction markets platform enabling users to stake on real-world truth claims. Part of the core team that placed 2nd at the Seedify prediction markets hackathon, raising $500K in funding.",
   },
   "flashbets": {
     title: "FlashBets",
     description: "60-second BTC prediction markets with dynamic odds and instant settlement on Linera microchains.",
     tech: ["Rust", "Linera", "GraphQL", "React"],
-    order: 6,
+    order: 7,
     live: null,
     cvDescription: "60-second BTC prediction markets with dynamic odds engine and instant settlement. Leverages Linera microchains for sub-second finality and horizontal scalability.",
   },
@@ -66,7 +78,7 @@ export const overrides: Record<string, ProjectOverride> = {
     title: "DAGPulse",
     description: "Real-time Kaspa blockchain visualizer. Watch blocks, transactions, and DAG structure live.",
     tech: ["Svelte", "WebSocket", "Kaspa", "D3.js"],
-    order: 7,
+    order: 9,
     live: "https://yonkoo11.github.io/dagpulse/",
     cvDescription: "Real-time visualization dashboard for the Kaspa blockchain DAG. Streams live blocks and transactions via WebSocket, renders DAG topology, and displays network health metrics.",
   },
@@ -74,7 +86,7 @@ export const overrides: Record<string, ProjectOverride> = {
     title: "Kaspa POS",
     description: "Instant crypto payments for merchants. Point-of-sale terminal powered by Kaspa's 1-second block times.",
     tech: ["Svelte", "Kaspa", "QR", "WebSocket"],
-    order: 8,
+    order: 10,
     live: "https://yonkoo11.github.io/kaspa-pos/",
     cvDescription: "Merchant point-of-sale application for accepting Kaspa cryptocurrency payments. Features QR code generation, real-time payment confirmation via WebSocket, and transaction history.",
   },
@@ -82,7 +94,7 @@ export const overrides: Record<string, ProjectOverride> = {
     title: "Last Rally",
     description: "On-chain Pong with NFT paddles and tournament betting. Arcade gaming meets DeFi on Avalanche.",
     tech: ["React", "Solidity", "Avalanche", "RainbowKit"],
-    order: 9,
+    order: 8,
     live: "https://yonkoo11.github.io/last-rally/",
     cvDescription: "On-chain arcade gaming with NFT paddles and tournament betting pools. Classic Pong mechanics meet DeFi primitives on Avalanche C-Chain.",
   },

@@ -37,6 +37,7 @@ function enrichRepo(repo: GitHubRepo) {
     updatedAt: repo.updated_at,
     order: override.order ?? 99,
     featured: override.featured ?? false,
+    badge: override.badge || undefined,
     cvDescription:
       override.cvDescription || override.description || repo.description || "",
   };
@@ -66,7 +67,30 @@ async function main() {
 
   try {
     const repos = await fetchPortfolioRepos();
-    projects = repos.map(enrichRepo).sort((a, b) => a.order - b.order);
+    const repoNames = new Set(repos.map((r) => r.name));
+    const enriched = repos.map(enrichRepo);
+
+    // Inject override-only projects (no GitHub repo needed)
+    for (const [name, override] of Object.entries(overrides)) {
+      if (!repoNames.has(name) && override.title) {
+        enriched.push({
+          name,
+          title: override.title,
+          description: override.description || "",
+          tech: override.tech || [],
+          github: `https://github.com/${GITHUB_USER}`,
+          live: override.live !== undefined ? override.live : null,
+          stars: 0,
+          updatedAt: new Date().toISOString(),
+          order: override.order ?? 99,
+          featured: override.featured ?? false,
+          badge: override.badge || undefined,
+          cvDescription: override.cvDescription || override.description || "",
+        });
+      }
+    }
+
+    projects = enriched.sort((a, b) => a.order - b.order);
     console.log(`Synced ${projects.length} portfolio projects from GitHub`);
   } catch (err) {
     console.warn(`GitHub API failed: ${err}. Falling back to cached data.`);

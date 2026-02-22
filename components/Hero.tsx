@@ -16,9 +16,16 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as const }}
         >
-          <p className="text-accent font-semibold tracking-[0.2em] uppercase text-xs mb-6">
-            Full-Stack Web3 Engineer
-          </p>
+          <div className="flex items-center gap-4 mb-6">
+            <img
+              src="/portfolio/avatar.png"
+              alt="Dr. Alex"
+              className="w-14 h-14 rounded-full border-2 border-accent/20"
+            />
+            <p className="text-accent font-semibold tracking-[0.2em] uppercase text-xs">
+              Full-Stack Web3 Engineer
+            </p>
+          </div>
 
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] mb-8">
             Building the
