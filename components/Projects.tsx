@@ -39,9 +39,16 @@ export default function Projects() {
                 ease: [0.22, 1, 0.36, 1] as const,
               }}
             >
-              <span className="font-display text-6xl font-bold text-border leading-none mb-6">
-                {String(i + 1).padStart(2, "0")}
-              </span>
+              <div className="flex items-start justify-between mb-6">
+                <span className="font-display text-6xl font-bold text-border leading-none">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                {project.badge && (
+                  <span className="text-[10px] font-semibold uppercase tracking-wider bg-accent/10 text-accent px-3 py-1 rounded-full">
+                    {project.badge}
+                  </span>
+                )}
+              </div>
 
               <h3 className="font-display text-2xl md:text-3xl font-bold mb-3 group-hover:text-accent transition-colors">
                 {project.title}

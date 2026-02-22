@@ -5,8 +5,9 @@ import { contact, profile } from "@/data";
 
 const links = [
   { label: "GitHub", href: contact.github },
-  { label: "Telegram", href: contact.telegram },
+  { label: "LinkedIn", href: contact.linkedin },
   { label: "X", href: contact.x },
+  { label: "Telegram", href: contact.telegram },
   { label: "Email", href: `mailto:${contact.email}` },
 ];
 

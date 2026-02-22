@@ -13,13 +13,14 @@ export interface Project {
   updatedAt: string;
   order: number;
   featured: boolean;
+  badge?: string;
   cvDescription: string;
 }
 
 export const projects: Project[] = projectData.projects;
 export const lastUpdated: string = projectData.lastUpdated;
 
-const CHAIN_NAMES = ["Ethereum", "Solana", "Mantle", "Linera", "Avalanche", "Base"];
+const CHAIN_NAMES = ["Ethereum", "Solana", "Mantle", "Linera", "Avalanche", "Base", "Kaspa"];
 
 export function getStats() {
   const allTech = projects.flatMap((p) => p.tech);
@@ -28,6 +29,6 @@ export function getStats() {
     { value: `${projects.length}+`, label: "Shipped Projects" },
     { value: String(uniqueChains.size), label: "Blockchains" },
     { value: "3", label: "Smart Contract Languages" },
-    { value: "ZK", label: "Proof Systems" },
+    { value: "2nd", label: "Hackathon Finish" },
   ];
 }
