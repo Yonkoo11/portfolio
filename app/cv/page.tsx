@@ -32,9 +32,9 @@ export default function CVPage() {
 
       <nav className="cv-nav-bar">
         <a href={contact.github}>GitHub: {contact.githubHandle}</a>
+        <a href={contact.linkedin}>LinkedIn</a>
         <a href={contact.x}>X: {contact.xHandle}</a>
         <a href={`mailto:${contact.email}`}>{contact.email}</a>
-        <a href={contact.telegram}>Telegram: {contact.telegramHandle}</a>
       </nav>
 
       <div className="cv-headline">
@@ -75,6 +75,11 @@ export default function CVPage() {
           <div className="cv-stat-box">
             <div className="cv-number">{chainCount}</div>
             <div className="cv-label">Blockchains</div>
+          </div>
+
+          <div className="cv-stat-box">
+            <div className="cv-number">2nd</div>
+            <div className="cv-label">Seedify Hackathon</div>
           </div>
 
           <h4 className="cv-section-header" style={{ marginTop: "20px" }}>
