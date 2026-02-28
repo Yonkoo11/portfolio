@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-22T18:41:17.328Z",
+  "lastUpdated": "2026-02-28T09:47:06.183Z",
   "projects": [
     {
       "name": "shadow-markets",
@@ -49,7 +49,7 @@
       "github": "https://github.com/Yonkoo11",
       "live": null,
       "stars": 0,
-      "updatedAt": "2026-02-22T18:41:17.320Z",
+      "updatedAt": "2026-02-28T09:47:06.181Z",
       "order": 3,
       "featured": true,
       "badge": "2nd Place - Seedify Hackathon",
@@ -77,20 +77,23 @@
     {
       "name": "faktory",
       "title": "Faktory Protocol",
-      "description": "Invoice yield optimization platform. Freelancers mint NFTs for unpaid invoices and earn 3.5-7% APY while waiting.",
+      "description": "AI-native treasury system for B2B invoice management and capital yield on Cronos. Winner of Best Crypto.com x Cronos Ecosystem Integration ($3,000).",
       "tech": [
         "Next.js",
         "Solidity",
-        "Mantle",
-        "wagmi"
+        "Cronos",
+        "AI Agent",
+        "x402"
       ],
       "github": "https://github.com/Yonkoo11/faktory",
       "live": "https://yonkoo11.github.io/faktory/",
+      "demo": "https://www.youtube.com/watch?v=8hIWTCTinTY",
       "stars": 1,
       "updatedAt": "2026-02-10T09:21:35Z",
-      "order": 5,
+      "order": 3,
       "featured": true,
-      "cvDescription": "Invoice yield optimization platform enabling freelancers to mint NFTs representing unpaid invoices and earn 3.5-7% APY while awaiting payment. Built on Mantle for low-cost transactions and fast finality."
+      "badge": "Winner - Cronos x402 PayTech Hackathon ($3,000)",
+      "cvDescription": "AI-native treasury management system that tokenizes B2B invoices as NFTs and deploys capital to yield strategies autonomously. Won Best Crypto.com x Cronos Ecosystem Integration ($3,000) at the Cronos x402 PayTech Hackathon. Features an autonomous AI agent for 24/7 monitoring, x402 on-chain payment settlement, and human-in-the-loop controls."
     },
     {
       "name": "anchor-selfcare",
@@ -140,7 +143,7 @@
       "github": "https://github.com/Yonkoo11/last-rally",
       "live": "https://yonkoo11.github.io/last-rally/",
       "stars": 0,
-      "updatedAt": "2026-02-13T22:53:23Z",
+      "updatedAt": "2026-02-28T09:46:29Z",
       "order": 8,
       "featured": false,
       "cvDescription": "On-chain arcade gaming with NFT paddles and tournament betting pools. Classic Pong mechanics meet DeFi primitives on Avalanche C-Chain."

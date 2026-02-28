@@ -3,8 +3,8 @@ export const profile = {
   title: "Full-Stack Web3 Engineer",
   tagline: "Building the future of finance.",
   bio: [
-    "I'm a full-stack Web3 engineer who cares equally about form and function. I've built DeFi protocols on Mantle, prediction markets on Linera, zero-knowledge voting systems on Solana, and on-chain arcade games on Avalanche.",
-    "My work spans smart contract development (Solidity, Rust, Noir) and frontend engineering (React, Next.js, TypeScript). As part of the TruthBounty core team, we placed 2nd at the Seedify prediction markets hackathon and raised $500K.",
+    "I'm a full-stack Web3 engineer who cares equally about form and function. I've built DeFi protocols, prediction markets on Linera, zero-knowledge voting systems on Solana, and on-chain arcade games on Avalanche.",
+    "My work spans smart contract development (Solidity, Rust, Noir) and frontend engineering (React, Next.js, TypeScript). I won Best Crypto.com x Cronos Ecosystem Integration ($3,000) at the Cronos x402 PayTech Hackathon with Faktory, an AI-native treasury system. As part of the TruthBounty core team, we placed 2nd at the Seedify prediction markets hackathon and raised $500K.",
     "I move fast, ship quality, and build tools the crypto community actually wants to use.",
   ],
   status: "Currently accepting remote opportunities",
@@ -25,6 +25,6 @@ export const contact = {
 export const skillGroups = [
   { label: "Frontend", skills: ["React", "Next.js", "Svelte", "TypeScript", "Tailwind CSS", "Framer Motion"] },
   { label: "Smart Contracts", skills: ["Solidity", "Rust", "Noir", "Foundry", "Anchor"] },
-  { label: "Chains", skills: ["Ethereum", "Solana", "Base", "Mantle", "Kaspa", "Avalanche"] },
+  { label: "Chains", skills: ["Ethereum", "Solana", "Base", "Cronos", "Mantle", "Kaspa", "Avalanche"] },
   { label: "Tools", skills: ["wagmi", "viem", "GraphQL", "Docker", "Git"] },
 ] as const;
