@@ -29,6 +29,6 @@ export function getStats() {
     { value: `${projects.length}+`, label: "Shipped Projects" },
     { value: String(uniqueChains.size), label: "Blockchains" },
     { value: "3", label: "Smart Contract Languages" },
-    { value: "2nd", label: "Hackathon Finish" },
+    { value: "$3K", label: "Prize Won" },
   ];
 }

@@ -40,12 +40,13 @@ export const overrides: Record<string, ProjectOverride> = {
   },
   "faktory": {
     title: "Faktory Protocol",
-    description: "Invoice yield optimization platform. Freelancers mint NFTs for unpaid invoices and earn 3.5-7% APY while waiting.",
-    tech: ["Next.js", "Solidity", "Mantle", "wagmi"],
-    order: 5,
+    description: "AI-native treasury system for B2B invoices. Autonomously tokenizes, optimizes yield, and settles via x402. Won Best Crypto.com x Cronos Ecosystem Integration ($3,000).",
+    tech: ["Next.js", "Solidity", "Cronos", "AI Agent", "x402"],
+    order: 2,
     featured: true,
+    badge: "Winner - Cronos x402 PayTech Hackathon ($3,000)",
     live: "https://yonkoo11.github.io/faktory/",
-    cvDescription: "Invoice yield optimization platform enabling freelancers to mint NFTs representing unpaid invoices and earn 3.5-7% APY while awaiting payment. Built on Mantle for low-cost transactions and fast finality.",
+    cvDescription: "AI-native treasury management system that tokenizes B2B invoices as NFTs and deploys capital to yield strategies autonomously. Won Best Crypto.com x Cronos Ecosystem Integration ($3,000) at the Cronos x402 PayTech Hackathon. Features an autonomous AI agent for 24/7 monitoring, x402 on-chain payment settlement, and human-in-the-loop controls.",
   },
   "anchor-selfcare": {
     title: "ANCHOR",
